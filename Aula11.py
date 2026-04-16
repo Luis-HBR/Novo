@@ -25,33 +25,31 @@ inimigo['defesa']=inimigo['defesa']+random.randint(-5,5)
 print('Jogador:')                                     #Mostrar ao usuário os status dos combatentes
 print(f'HP:{jogador['vida']} Ataque:{jogador['ataque']} Defesa:{jogador['defesa']}')
 print(f'Level: {lvl}')
+print('Inimigo a vista')
 print('Inimigo:')
 print(f'HP:{inimigo['vida']} Ataque:{inimigo['ataque']} Defesa:{inimigo['defesa']}')
 
-
 while jogador['vida'] >= 1:
-
-    print('Inimigo a vista')
 
     decisao = input('Atacar ou Fugir? a/f:')            #Escolha do usuário
 
     if decisao == 'a' and inimigo['vida']>=1:           #Decisão de combate
-        while inimigo['vida']>=1:
+        while inimigo['vida']>=1:                       #Ataque
             vj=int(jogador['vida'])                     #Esquema de vida e dano para os combatentes
-            dj= max(1, int(jogador['ataque']) - int(inimigo['defesa']))
+            dj= max(random.randint (1,3), int(jogador['ataque']) - int(inimigo['defesa']))
 
             vi=int(inimigo['vida'])
-            di= max(1, int(inimigo['ataque']) - int(jogador['defesa']))
+            di= max(random.randint (1,3), int(inimigo['ataque']) - int(jogador['defesa']))
 
-            print(f'Dano causado: {dj}-{vi}={vi - dj}\n')#Quantidade de dano  
+            print(f'Dano causado: {vi}-{dj}={vi - dj}\n')#Quantidade de dano  
             time.sleep(1)
             inimigo['vida'] = vi - dj
-            print(f'Dano recebido: {di}-{vj}={vj - di}\n')
+            print(f'Dano recebido: {vj}-{di}={vj - di}\n')
             time.sleep(1)
             jogador['vida'] = vj - di
             time.sleep(0.3)
-
         else:
+            print('Golpe de misericordia')
             decisao
 
     elif decisao == 'a' and lvl == 10:                  #Vitória
@@ -73,16 +71,17 @@ while jogador['vida'] >= 1:
         time.sleep(1)
         print('Jogador:')
         print(f'HP:{jogador['vida']} Ataque:{jogador['ataque']} Defesa:{jogador['defesa']}')#Mostrar novas informações para usuário
+        print(f'Level: {lvl}')
         print('Inimigo:')
         print(f'HP:{inimigo['vida']} Ataque:{inimigo['ataque']} Defesa:{inimigo['defesa']}')
 
     elif inimigo['vida']<=0 and id in up:               #Derrota do inimigo e upar
         print('Inimigo Derrotado')
         inimigo['vida']=50+(10*lvl)+random.randint(-5,5)         #Criar novo inimigo pós vitória
-        inimigo['ataque']=10+random.randint(-5,5)
-        inimigo['defesa']=10+random.randint(-5,5)
+        inimigo['ataque']=10+(2*lvl)+random.randint(-5,5)
+        inimigo['defesa']=10+(2*lvl)+random.randint(-5,5)
         jogador['vida']=50+(10*lvl)                     #Recuperar toda vida e upar de level
-        jogador['ataque']=10+(2*lvl)
+        jogador['ataque']=10000+(2*lvl)
         jogador['defesa']=10+(2*lvl)
         id=id+1                                         #Aumenta a quantidade de Inimigo Derrotado
         lvl=lvl+1                                       #Aumentar o level
@@ -115,6 +114,7 @@ while jogador['vida'] >= 1:
         print('Novo Inimigo')
         print('Jogador:')
         print(f'HP:{jogador['vida']} Ataque:{jogador['ataque']} Defesa:{jogador['defesa']}')#Mostrar novas informações para usuário
+        print(f'Level: {lvl}')
         print('Inimigo:')
         print(f'HP:{inimigo['vida']} Ataque:{inimigo['ataque']} Defesa:{inimigo['defesa']}')
 
