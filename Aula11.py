@@ -1,21 +1,20 @@
 import random
 import time
-
 lvl=int(1)      #Aqui fica o Level do cenario
 id=int(0)       #Aqui é a quantidade de Inimigos Derrotados
 up=[3,6,9,12,15,18,21,24,27,30]     #Aqui fica a marcação de quando deve aumentar o Level
 
 jogador = {#Status do jogador
     'vida':50,
-    'ataque':10,
+    'ataque':10000,
     'defesa':10
 }
 
-inimigo ={      #Status do inimigo
+inimigo ={                      #Status do inimigo
     'vida':50,
     'ataque':10,
     'defesa':10
-}
+}      
 
 
 inimigo['vida']=inimigo['vida']+random.randint(-5,5)  #Randomizar os status do inimigo
