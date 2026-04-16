@@ -6,7 +6,7 @@ up=[3,6,9,12,15,18,21,24,27,30]     #Aqui fica a marcação de quando deve aumen
 
 jogador = {#Status do jogador
     'vida':50,
-    'ataque':10000,
+    'ataque':10,
     'defesa':10
 }
 
@@ -80,7 +80,7 @@ while jogador['vida'] >= 1:
         inimigo['ataque']=10+(2*lvl)+random.randint(-5,5)
         inimigo['defesa']=10+(2*lvl)+random.randint(-5,5)
         jogador['vida']=50+(10*lvl)                     #Recuperar toda vida e upar de level
-        jogador['ataque']=10000+(2*lvl)
+        jogador['ataque']=10+(2*lvl)
         jogador['defesa']=10+(2*lvl)
         id=id+1                                         #Aumenta a quantidade de Inimigo Derrotado
         lvl=lvl+1                                       #Aumentar o level
